@@ -15,11 +15,11 @@ const skills = [
 ];
 
 const portfolioItems = [
-  "/images/work 1.png",
-  "/images/work 2.png",
-  "/images/work 3.png",
-  "/images/work 4.png",
-  "/images/work 5.png",
+  "/images/work-1.png",
+  "/images/work-2.png",
+  "/images/work-3.png",
+  "/images/work-4.png",
+  "/images/work-5.png",
 ];
 
 export function MarqueeSection() {
