@@ -9,14 +9,26 @@ export function ContactSection() {
   const [copied, setCopied] = useState(false);
   const email = "azizulislamux@gmail.com";
 
-  const copyToClipboard = () => {
-    navigator.clipboard.writeText(email);
-    setCopied(true);
-    toast({
-      title: "Email copied to clipboard",
-      description: email,
-    });
-    setTimeout(() => setCopied(false), 2000);
+  const copyToClipboard = async () => {
+    try {
+      await navigator.clipboard.writeText(email);
+      setCopied(true);
+
+      // Show toast notification
+      toast({
+        title: "Email copied!",
+        description: "Email address copied to clipboard",
+      });
+
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      console.error("Failed to copy: ", err);
+      toast({
+        title: "Copy failed",
+        description: "Could not copy email to clipboard",
+        variant: "destructive",
+      });
+    }
   };
 
   return (

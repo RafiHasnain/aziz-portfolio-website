@@ -27,7 +27,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "components/interactive-skills.jsx"
+    "components/interactive-skills.jsx",
+    "components/navbar.tsx"
   ],
   "exclude": ["node_modules"]
 }
