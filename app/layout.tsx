@@ -1,11 +1,7 @@
-import type React from "react";
 import "./globals.css";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { ThemeProvider } from "@/components/theme-provider";
-import { Toaster } from "@/components/ui/toaster";
+import ClientLayout from "@/components/ClientLayout"; // you'll create this
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,17 +16,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html className="scroll-smooth" lang="en">
-      <body>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="light"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-          <Toaster />
-        </ThemeProvider>
+    <html lang="en" className="scroll-smooth">
+      <body className={inter.className}>
+        <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
   );

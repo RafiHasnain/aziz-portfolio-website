@@ -81,3 +81,30 @@
     animation-play-state: paused;
   }
 }
+
+/* Interactive skills */
+.skills-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-tag {
+  position: absolute;
+  transform-origin: center center;
+  transition: transform 0.05s linear;
+  cursor: grab;
+  user-select: none;
+}
+
+.skill-tag:active {
+  cursor: grabbing;
+}
+
+/* Custom cursor for the skills area */
+.skills-area {
+  cursor: grab;
+}
+
+.skills-area:active {
+  cursor: grabbing;
+}
