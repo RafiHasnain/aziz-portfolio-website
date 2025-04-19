@@ -1,9 +1,13 @@
 "use client";
+
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import React from "react";
 import { Button } from "./ui/button";
 
 const Navbar = () => {
+  const pathname = usePathname();
+  const isPlayground = pathname.includes("/playground");
   const handleDownloadResume = () => {
     // Create a link element
     const link = document.createElement("a");
@@ -19,14 +23,18 @@ const Navbar = () => {
         <div className="bg-[#0C0C0C] opacity-80 text-white rounded-full px-3 py-2 sm:px-4 sm:py-2.5 lg:px-6 lg:py-3 flex items-center gap-2 sm:gap-4 lg:gap-8  drop-shadow-2xl shadow-xl">
           <Link
             href="/"
-            className="font-medium text-xs sm:text-sm lg:text-base whitespace-nowrap"
+            className={`${
+              isPlayground ? " text-gray-400 hover:text-white " : "text-white"
+            } transition-colors text-xs sm:text-sm lg:text-base whitespace-nowrap`}
           >
             Home
           </Link>
           <span className="text-gray-500 text-xs sm:text-sm">·</span>
           <Link
             href="/playground"
-            className="text-gray-400 hover:text-white transition-colors text-xs sm:text-sm lg:text-base whitespace-nowrap"
+            className={`${
+              isPlayground ? "text-white" : "text-gray-400 hover:text-white"
+            } transition-colors text-xs sm:text-sm lg:text-base whitespace-nowrap`}
           >
             Playground
           </Link>
