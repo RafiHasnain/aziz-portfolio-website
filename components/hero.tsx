@@ -8,7 +8,7 @@ const Hero = () => {
   return (
     <div
       style={{
-        backgroundImage: `url('/images/bg-hero-portfolio.png')`,
+        // backgroundImage: `url('/images/bg-hero-portfolio.png')`,
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
       }}
