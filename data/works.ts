@@ -2,8 +2,7 @@ export type WorkCategory =
   | "Web Design"
   | "Mobile Apps"
   | "SaaS Products"
-  | "Case Study"
-  | "All";
+  | "Case Study";
 
 export interface WorkItem {
   id: string;
@@ -74,7 +73,6 @@ export const works: WorkItem[] = [
 ];
 
 export const categories: WorkCategory[] = [
-  "All",
   "Web Design",
   "Mobile Apps",
   "SaaS Products",

@@ -2,10 +2,12 @@
 
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "./ui/button";
+// import { useRouter } from "next/navigation";
 
 const Navbar = () => {
+  const [isContact, setIsContact] = useState(false);
   const pathname = usePathname();
   const isPlayground = pathname.includes("/playground");
   const handleDownloadResume = () => {
@@ -17,31 +19,61 @@ const Navbar = () => {
     link.click();
     document.body.removeChild(link);
   };
+
+  useEffect(() => {
+    console.log({ isContact });
+  }, [isContact]);
+
   return (
     <div className="container mx-auto px-4 pt-4 sm:pt-6 lg:pt-8 flex justify-center fixed left-0 right-0 z-50 ">
       <div className="bg-white">
         <div className="bg-[#0C0C0C] opacity-80 text-white rounded-full px-3 py-2 sm:px-4 sm:py-2.5 lg:px-6 lg:py-3 flex items-center gap-2 sm:gap-4 lg:gap-8  drop-shadow-2xl shadow-xl">
           <Link
             href="/"
+            onClick={() => setIsContact(false)}
             className={`${
-              isPlayground ? " text-gray-400 hover:text-white " : "text-white"
+              isPlayground || isContact
+                ? " text-gray-400 hover:text-white "
+                : "text-white"
             } transition-colors text-xs sm:text-sm lg:text-base whitespace-nowrap`}
           >
             Home
+            <span
+              className={`${
+                isPlayground || isContact
+                  ? "hidden"
+                  : "fixed top-7 sm:top-8 md:top-10 left-7 sm:left-8 md:left-10 text-gray-500 text-xs sm:text-sm"
+              }`}
+            >
+              ·
+            </span>
           </Link>
           <span className="text-gray-500 text-xs sm:text-sm">·</span>
           <Link
             href="/playground"
+            onClick={() => setIsContact(false)}
             className={`${
               isPlayground ? "text-white" : "text-gray-400 hover:text-white"
             } transition-colors text-xs sm:text-sm lg:text-base whitespace-nowrap`}
           >
             Playground
+            <span
+              className={`${
+                !isPlayground || isContact
+                  ? "hidden"
+                  : "fixed top-7 sm:top-8 md:top-10 left-7 sm:left-8 md:left-10 text-gray-500 text-xs sm:text-sm"
+              }`}
+            >
+              ·
+            </span>
           </Link>
           <span className="text-gray-500 text-xs sm:text-sm">·</span>
           <Link
             href="#contact"
-            className="text-gray-400 hover:text-white transition-colors text-xs sm:text-sm lg:text-base whitespace-nowrap"
+            onClick={() => setIsContact(true)}
+            className={`${
+              !isContact ? " text-gray-400 hover:text-white " : "text-white"
+            } transition-colors text-xs sm:text-sm lg:text-base whitespace-nowrap`}
           >
             Contact
           </Link>

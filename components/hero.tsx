@@ -66,7 +66,7 @@ const Hero = () => {
           </div>
 
           {/* Description */}
-          <div className="max-w-3xl mx-auto mt-8 text-lg/10 text-gray-400">
+          <div className="max-w-6xl mx-0 mt-8 text-lg/10 text-gray-400">
             <p>
               Specializing in crafting intuitive and impactful user experiences
               for

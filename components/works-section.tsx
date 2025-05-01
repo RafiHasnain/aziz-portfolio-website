@@ -6,12 +6,12 @@ import { WorkCard } from "./work-card";
 import { Button } from "@/components/ui/button";
 
 export function WorksSection() {
-  const [activeCategory, setActiveCategory] = useState<WorkCategory>("All");
+  const [activeCategory, setActiveCategory] =
+    useState<WorkCategory>("Web Design");
 
-  const filteredWorks =
-    activeCategory === "All"
-      ? works
-      : works.filter((work) => work.categories.includes(activeCategory));
+  const filteredWorks = works.filter((work) =>
+    work.categories.includes(activeCategory)
+  );
 
   return (
     <section className="py-16">
@@ -20,15 +20,15 @@ export function WorksSection() {
 
         {/* Filter Buttons */}
         <div className="flex flex-wrap justify-center gap-2 mb-12  ">
-          <div className=" rounded-xl bg-gray-100">
+          <div className=" rounded-xl bg-[#E0E0E0]">
             {categories.map((category) => (
               <Button
                 key={category}
                 variant={activeCategory === category ? "default" : "outline"}
                 className={` ${
                   activeCategory === category
-                    ? "bg-gray-800 text-white"
-                    : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                    ? "bg-white text-[#0F0E1E] italic drop-shadow-md hover:bg-white"
+                    : "bg-[#E0E0E0] text-gray-500 hover:bg-gray-200"
                 }`}
                 onClick={() => setActiveCategory(category)}
               >

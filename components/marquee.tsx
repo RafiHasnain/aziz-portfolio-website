@@ -11,6 +11,8 @@ interface MarqueeProps {
   speed?: "slow" | "normal" | "fast";
   pauseOnHover?: boolean;
   className?: string;
+  fade?: boolean; // Whether to add fade effect on sides
+  fadeWidth?: number; // Width of the fade effect in pixels
 }
 
 export function Marquee({
@@ -19,6 +21,8 @@ export function Marquee({
   speed = "normal",
   pauseOnHover = true,
   className,
+  fade = true,
+  fadeWidth = 100,
 }: MarqueeProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const scrollerRef = useRef<HTMLDivElement>(null);
@@ -41,24 +45,52 @@ export function Marquee({
   };
 
   return (
-    <div
-      ref={containerRef}
-      className={cn(
-        "flex overflow-hidden w-full relative",
-        pauseOnHover && "hover:[&>div]:pause",
-        className
-      )}
-    >
+    <div className={cn("relative", className)}>
       <div
-        ref={scrollerRef}
+        ref={containerRef}
         className={cn(
-          "flex min-w-full flex-nowrap",
-          speedClass[speed],
-          direction === "right" ? "animate-marquee-reverse" : "animate-marquee"
+          "flex overflow-hidden w-full relative",
+          pauseOnHover && "hover:[&>div]:pause",
+          className
         )}
       >
-        {children}
+        <div
+          ref={scrollerRef}
+          className={cn(
+            "flex min-w-full flex-nowrap",
+            speedClass[speed],
+            direction === "right"
+              ? "animate-marquee-reverse"
+              : "animate-marquee"
+          )}
+        >
+          {children}
+        </div>
       </div>
+      {/* Fade effect overlays */}
+      {fade && (
+        <>
+          {/* Left fade */}
+          <div
+            className="pointer-events-none absolute left-0 top-0 z-10 h-full"
+            style={{
+              width: `${fadeWidth}px`,
+              background: "linear-gradient(to right, white, transparent)",
+            }}
+            aria-hidden="true"
+          />
+
+          {/* Right fade */}
+          <div
+            className="pointer-events-none absolute right-0 top-0 z-10 h-full"
+            style={{
+              width: `${fadeWidth}px`,
+              background: "linear-gradient(to left, white, transparent)",
+            }}
+            aria-hidden="true"
+          />
+        </>
+      )}
     </div>
   );
 }

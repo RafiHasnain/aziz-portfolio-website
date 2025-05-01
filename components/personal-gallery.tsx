@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Marquee } from "./marquee";
 
 // Define the gallery items
 const galleryItems = [
@@ -42,7 +43,7 @@ export function PersonalGallery() {
           My Personal Gallery
         </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+        {/* <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
           {galleryItems.map((item) => (
             <div key={item.id} className="relative group">
               <div className="overflow-hidden rounded-xl shadow-md transition-all duration-300 hover:shadow-lg">
@@ -61,7 +62,23 @@ export function PersonalGallery() {
               </div>
             </div>
           ))}
-        </div>
+        </div> */}
+        <Marquee direction="right" speed="normal" fade={false}>
+          {galleryItems.map((item, index) => (
+            <div
+              key={index}
+              className="min-w-[300px] h-[200px] bg-gray-100 rounded-lg overflow-hidden shadow-md mx-3"
+            >
+              <Image
+                src={item.src || "/placeholder.svg"}
+                alt={`Portfolio item ${index + 1}`}
+                width={300}
+                height={200}
+                className="w-full h-full object-cover"
+              />
+            </div>
+          ))}
+        </Marquee>
       </div>
     </section>
   );

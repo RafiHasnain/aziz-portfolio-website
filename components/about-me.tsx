@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { GraduationCap, Palette, Medal } from "lucide-react";
+import { WordFlipperSlide } from "./word-flipper-slide";
 
 export function AboutMe() {
   return (
@@ -58,9 +59,9 @@ export function AboutMe() {
                 </span>
               </div>
 
-              <div className="flex items-center gap-3">
+              <WordFlipperSlide />
+              {/* <div className="flex items-center gap-3">
                 <div className="p-2 rounded-full">
-                  {/* <Palette className="h-6 w-6 text-gray-700" /> */}
                   <Image
                     src="/images/figma-logo.png"
                     alt="Travel photo"
@@ -72,7 +73,7 @@ export function AboutMe() {
                 <span className="text-[32px] font-semibold">
                   Profession by Designer
                 </span>
-              </div>
+              </div> */}
 
               <div className="flex items-center gap-3">
                 {/* <div className="bg-gray-100 p-2 rounded-full">
