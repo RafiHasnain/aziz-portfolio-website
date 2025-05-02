@@ -27,7 +27,7 @@ const Navbar = () => {
   return (
     <div className="container mx-auto px-4 pt-4 sm:pt-6 lg:pt-8 flex justify-center fixed left-0 right-0 z-50 ">
       <div className="bg-white">
-        <div className="bg-[#0C0C0C] opacity-80 text-white rounded-full px-3 py-2 sm:px-4 sm:py-2.5 lg:px-6 lg:py-3 flex items-center gap-2 sm:gap-4 lg:gap-8  drop-shadow-2xl shadow-xl">
+        <div className="bg-[#0C0C0C] opacity-80 text-white rounded-full px-3 py-2 sm:px-4 sm:py-2.5 lg:px-6 lg:py-3 flex items-center gap-2 sm:gap-4 lg:gap-8  drop-shadow-xl shadow-xl">
           <Link
             href="/"
             onClick={() => setIsContact(false)}
@@ -80,7 +80,7 @@ const Navbar = () => {
           <Button
             variant="ghost"
             onClick={handleDownloadResume}
-            className="bg-gray-700 hover:bg-gray-600 rounded-full text-xs sm:text-sm px-2 sm:px-3 lg:px-4 h-7 sm:h-8 lg:h-9 whitespace-nowrap"
+            className="opacity-80 bg-gray-700 shadow-inner shadow-gray-500 hover:bg-gray-600 rounded-full text-xs sm:text-sm px-2 sm:px-3 lg:px-4 h-7 sm:h-8 lg:h-9 whitespace-nowrap"
           >
             View Resume
           </Button>

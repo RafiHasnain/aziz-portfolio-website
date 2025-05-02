@@ -19,6 +19,9 @@ const config = {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ["var(--font-gilroy)"],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -68,23 +71,22 @@ const config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
-        marquee: {
+        "marquee-left": {
           from: { transform: "translateX(0)" },
-          to: { transform: "translateX(calc(-50% - var(--gap, 1rem)/2))" },
+          to: { transform: "translateX(calc(-100% - 0px))" },
         },
-        "marquee-reverse": {
-          from: { transform: "translateX(calc(-50% - var(--gap, 1rem)/2))" },
+        "marquee-right": {
+          from: { transform: "translateX(calc(-100% - 0px))" },
           to: { transform: "translateX(0)" },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        marquee: "marquee 30s linear infinite",
-        "marquee-reverse": "marquee-reverse 30s linear infinite",
-        "marquee-slow": "marquee 60s linear infinite",
-        "marquee-normal": "marquee 30s linear infinite",
-        "marquee-fast": "marquee 15s linear infinite",
+        "marquee-left":
+          "marquee-left var(--marquee-duration, 40s) linear infinite",
+        "marquee-right":
+          "marquee-right var(--marquee-duration, 40s) linear infinite",
       },
     },
   },

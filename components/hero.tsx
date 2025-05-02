@@ -1,14 +1,40 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Mail, Phone } from "lucide-react";
-import React from "react";
+import { toast } from "@/hooks/use-toast";
+import React, { useState } from "react";
 
 const Hero = () => {
+  const [copied, setCopied] = useState(false);
+  const email = "azizulislamux@gmail.com";
+
+  const copyToClipboard = async () => {
+    try {
+      await navigator.clipboard.writeText(email);
+      setCopied(true);
+
+      // Show toast notification
+      toast({
+        title: "Email copied!",
+        description: "Email address copied to clipboard",
+      });
+
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      console.error("Failed to copy: ", err);
+      toast({
+        title: "Copy failed",
+        description: "Could not copy email to clipboard",
+        variant: "destructive",
+      });
+    }
+  };
   return (
     <div
       style={{
-        // backgroundImage: `url('/images/bg-hero-portfolio.png')`,
+        backgroundImage: `url('/images/bg-hero-portfolio.png')`,
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
       }}
@@ -74,9 +100,10 @@ const Hero = () => {
                 Complex
               </span>
               ,
-              <span className="mx-2 px-2 py-1 bg-gray-200 text-[#3C3C3D] rounded-md font-medium">
+              <span className="mx-2 px-2 py-1  bg-gray-200 text-[#3C3C3D] rounded-md font-medium">
                 Data-driven SaaS
               </span>
+              <br />
               products and
               <span className="mx-2 px-2 py-1 bg-gray-200 text-[#3C3C3D] rounded-md font-medium">
                 Entreprise Solutions
@@ -91,14 +118,25 @@ const Hero = () => {
 
           {/* CTA Buttons */}
           <div className="flex gap-4 mt-8">
-            <Button className="rounded-full bg-[#1E1E1E] hover:bg-black px-6">
-              <Phone className="mr-2 h-4 w-4" /> Book a Call
-            </Button>
+            <div className="relative">
+              <div className=" opacity-30 bg-gradient-to-r from-transparent from-40% via-black via-50% to-transparent to-60% absolute top-0 bottom-0 w-full"></div>
+              <a
+                href="https://calendly.com/azizulislamux"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button className="rounded-full bg-[#1E1E1E] outline outline-offset-2 outline-1 drop-shadow-xl  hover:bg-black px-6">
+                  Book a Call 💬
+                </Button>
+              </a>
+            </div>
+
             <Button
               variant="outline"
-              className="rounded-full border-gray-300 text-gray-700 hover:bg-gray-100 px-6"
+              onClick={copyToClipboard}
+              className="rounded-full border-gray-300 text-gray-700 outline outline-offset-2 outline-1 outline-[#E7E7E7] drop-shadow-xl hover:bg-gray-100 px-6"
             >
-              <Mail className="mr-2 h-4 w-4" /> Copy email
+              📩 Copy email
             </Button>
           </div>
         </div>

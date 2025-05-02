@@ -14,7 +14,7 @@ export function WorkCard({ work }: WorkCardProps) {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <div className="space-y-4 flex flex-col justify-evenly">
           <div>
-            <h3 className="text-[32px] font-bold text-gray-800">
+            <h3 className="text-[32px] font-bold text-[#3C3C3D]">
               {work.title}
             </h3>
             <p className="text-base text-[#BFBFBF]">{work.description}</p>

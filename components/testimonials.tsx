@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -95,9 +95,76 @@ const testimonials: Testimonial[] = [
 
 export function Testimonials() {
   const [activeTestimonial, setActiveTestimonial] = useState<string>("nairobi");
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [progress, setProgress] = useState(0);
+  const autoPlayTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const progressIntervalRef = useRef<NodeJS.Timeout | null>(null);
+  const slideDuration = 6000; // 6 seconds per slide
 
   const currentTestimonial =
     testimonials.find((t) => t.id === activeTestimonial) || testimonials[0];
+  const currentIndex = testimonials.findIndex(
+    (t) => t.id === activeTestimonial
+  );
+
+  // Function to move to the next testimonial
+  const goToNextTestimonial = () => {
+    const nextIndex = (currentIndex + 1) % testimonials.length;
+    setActiveTestimonial(testimonials[nextIndex].id);
+    setProgress(0); // Reset progress when changing testimonial
+  };
+
+  // Handle auto-play functionality
+  useEffect(() => {
+    if (isAutoPlaying) {
+      // Clear any existing timeouts
+      if (autoPlayTimeoutRef.current) {
+        clearTimeout(autoPlayTimeoutRef.current);
+      }
+      if (progressIntervalRef.current) {
+        clearInterval(progressIntervalRef.current);
+      }
+
+      // Set up progress interval (update progress every 60ms)
+      const progressStep = 100 / (slideDuration / 60);
+      progressIntervalRef.current = setInterval(() => {
+        setProgress((prevProgress) => {
+          const newProgress = prevProgress + progressStep;
+          return newProgress > 100 ? 100 : newProgress;
+        });
+      }, 60);
+
+      // Set up timeout for next slide
+      autoPlayTimeoutRef.current = setTimeout(() => {
+        goToNextTestimonial();
+      }, slideDuration);
+    }
+
+    // Cleanup function
+    return () => {
+      if (autoPlayTimeoutRef.current) {
+        clearTimeout(autoPlayTimeoutRef.current);
+      }
+      if (progressIntervalRef.current) {
+        clearInterval(progressIntervalRef.current);
+      }
+    };
+  }, [isAutoPlaying, activeTestimonial]);
+
+  // Handle manual testimonial selection
+  const handleTestimonialClick = (id: string) => {
+    setActiveTestimonial(id);
+    setProgress(0); // Reset progress
+    setIsAutoPlaying(false); // Pause auto-play when manually selecting
+
+    // Resume auto-play after 10 seconds of inactivity
+    if (autoPlayTimeoutRef.current) {
+      clearTimeout(autoPlayTimeoutRef.current);
+    }
+    autoPlayTimeoutRef.current = setTimeout(() => {
+      setIsAutoPlaying(true);
+    }, 10000);
+  };
 
   return (
     <section className="py-20 bg-white">
@@ -130,7 +197,7 @@ export function Testimonials() {
               </blockquote>
 
               {/* Author Info */}
-              <div className="flex gap-5 items-center">
+              <div className="flex flex-col items-center">
                 <div className="w-16 h-16 rounded-full overflow-hidden mb-3">
                   <Image
                     src={currentTestimonial.author.avatar || "/placeholder.svg"}
@@ -140,7 +207,7 @@ export function Testimonials() {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="text-left">
+                <div className="text-center">
                   <h4 className="font-semibold text-lg">
                     {currentTestimonial.author.name}
                   </h4>
@@ -155,24 +222,38 @@ export function Testimonials() {
           {/* Client Logos */}
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-8 pt-8 border-t border-dashed border-gray-300">
             {testimonials.map((testimonial) => (
-              <button
-                key={testimonial.id}
-                onClick={() => setActiveTestimonial(testimonial.id)}
-                className={`flex items-center justify-center transition-all duration-300 ${
-                  activeTestimonial === testimonial.id
-                    ? "opacity-100 scale-110"
-                    : "opacity-70 grayscale hover:opacity-100 hover:grayscale-0"
-                }`}
-                aria-label={`View testimonial from ${testimonial.company}`}
-              >
-                <Image
-                  src={testimonial.logo || "/placeholder.svg"}
-                  alt={testimonial.company}
-                  width={100}
-                  height={40}
-                  className="h-8 w-auto"
-                />
-              </button>
+              <div key={testimonial.id} className="relative pt-3">
+                {" "}
+                {/* Added pt-3 to create space for the progress bar */}
+                {/* Progress bar positioned higher above the logo */}
+                {activeTestimonial === testimonial.id && isAutoPlaying && (
+                  <div className="absolute top-0 left-0 w-full h-1 bg-transparent overflow-hidden">
+                    <motion.div
+                      className="h-full bg-gray-800"
+                      initial={{ width: 0 }}
+                      animate={{ width: `${progress}%` }}
+                      transition={{ duration: 0.1, ease: "linear" }}
+                    />
+                  </div>
+                )}
+                <button
+                  onClick={() => handleTestimonialClick(testimonial.id)}
+                  className={`flex items-center justify-center w-full transition-all duration-300 ${
+                    activeTestimonial === testimonial.id
+                      ? "opacity-100 scale-110"
+                      : "opacity-70 grayscale hover:opacity-100 hover:grayscale-0"
+                  }`}
+                  aria-label={`View testimonial from ${testimonial.company}`}
+                >
+                  <Image
+                    src={testimonial.logo || "/placeholder.svg"}
+                    alt={testimonial.company}
+                    width={100}
+                    height={40}
+                    className="h-8 w-auto"
+                  />
+                </button>
+              </div>
             ))}
           </div>
         </div>
