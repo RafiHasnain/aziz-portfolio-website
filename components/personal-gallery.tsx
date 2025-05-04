@@ -33,6 +33,96 @@ const galleryItems = [
     alt: "Cricket",
     category: "Sports",
   },
+  {
+    id: 6,
+    src: "/images/pg-1.png",
+    alt: "Skiing",
+    category: "Sports",
+  },
+  {
+    id: 7,
+    src: "/images/pg-2.png",
+    alt: "Motorcycle",
+    category: "Adventure",
+  },
+  {
+    id: 8,
+    src: "/images/pg-3.png",
+    alt: "Design Work",
+    category: "Work",
+  },
+  {
+    id: 9,
+    src: "/images/pg-4.png",
+    alt: "Car",
+    category: "Automotive",
+  },
+  {
+    id: 10,
+    src: "/images/pg-5.png",
+    alt: "Cricket",
+    category: "Sports",
+  },
+  {
+    id: 11,
+    src: "/images/pg-1.png",
+    alt: "Skiing",
+    category: "Sports",
+  },
+  {
+    id: 12,
+    src: "/images/pg-2.png",
+    alt: "Motorcycle",
+    category: "Adventure",
+  },
+  {
+    id: 13,
+    src: "/images/pg-3.png",
+    alt: "Design Work",
+    category: "Work",
+  },
+  {
+    id: 14,
+    src: "/images/pg-4.png",
+    alt: "Car",
+    category: "Automotive",
+  },
+  {
+    id: 15,
+    src: "/images/pg-5.png",
+    alt: "Cricket",
+    category: "Sports",
+  },
+  {
+    id: 16,
+    src: "/images/pg-1.png",
+    alt: "Skiing",
+    category: "Sports",
+  },
+  {
+    id: 17,
+    src: "/images/pg-2.png",
+    alt: "Motorcycle",
+    category: "Adventure",
+  },
+  {
+    id: 18,
+    src: "/images/pg-3.png",
+    alt: "Design Work",
+    category: "Work",
+  },
+  {
+    id: 19,
+    src: "/images/pg-4.png",
+    alt: "Car",
+    category: "Automotive",
+  },
+  {
+    id: 20,
+    src: "/images/pg-5.png",
+    alt: "Cricket",
+    category: "Sports",
+  },
 ];
 
 export function PersonalGallery() {
