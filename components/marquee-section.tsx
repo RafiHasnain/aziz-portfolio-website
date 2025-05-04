@@ -64,7 +64,7 @@ export function MarqueeSection() {
       {/* Skills Marquee - Left to Right */}
       <Marquee
         direction="right"
-        speed="normal"
+        speed={30}
         className="mb-8"
         fade={true}
         fadeWidth={500}
@@ -81,7 +81,7 @@ export function MarqueeSection() {
       </Marquee>
 
       {/* Portfolio Images Marquee - Right to Left */}
-      <Marquee direction="right" speed="normal" fade={false}>
+      <Marquee direction="right" speed={30} fade={false}>
         {portfolioItems.map((src, index) => (
           <div
             key={index}

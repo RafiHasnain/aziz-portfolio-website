@@ -38,7 +38,7 @@ const galleryItems = [
 export function PersonalGallery() {
   return (
     <section className="py-20 bg-white">
-      <div className="container mx-auto px-4">
+      <div>
         <h2 className="text-[32px] font-bold text-center mb-16">
           My Personal Gallery
         </h2>
@@ -63,7 +63,7 @@ export function PersonalGallery() {
             </div>
           ))}
         </div> */}
-        <Marquee direction="right" speed="normal" fade={false}>
+        <Marquee direction="right" speed={30} fade={false}>
           {galleryItems.map((item, index) => (
             <div
               key={index}

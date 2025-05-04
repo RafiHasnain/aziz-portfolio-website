@@ -2,13 +2,13 @@
 
 import type React from "react";
 
-import { useEffect, useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 
 interface MarqueeProps {
   children: React.ReactNode;
   direction?: "left" | "right";
-  speed?: "slow" | "normal" | "fast";
+  speed?: number; // Lower is faster
   pauseOnHover?: boolean;
   className?: string;
   fade?: boolean; // Whether to add fade effect on sides
@@ -18,55 +18,74 @@ interface MarqueeProps {
 export function Marquee({
   children,
   direction = "left",
-  speed = "normal",
+  speed = 40,
   pauseOnHover = true,
   className,
   fade = true,
   fadeWidth = 100,
 }: MarqueeProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const scrollerRef = useRef<HTMLDivElement>(null);
+  const [looperInstances, setLooperInstances] = useState(1);
+  const outerRef = useRef<HTMLDivElement>(null);
+  const innerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!scrollerRef.current) return;
+    // Calculate how many instances we need to create a seamless loop
+    const calculateInstances = () => {
+      if (!innerRef.current || !outerRef.current) return;
 
-    // Clone the content for seamless scrolling
-    const scrollerContent = Array.from(scrollerRef.current.children);
-    scrollerContent.forEach((item) => {
-      const duplicate = item.cloneNode(true);
-      scrollerRef.current?.appendChild(duplicate);
-    });
+      const outerWidth = outerRef.current.getBoundingClientRect().width;
+      const innerWidth = innerRef.current.getBoundingClientRect().width;
+
+      // We need enough instances to cover the container width at least twice
+      // to ensure a seamless loop
+      const instances = Math.ceil(outerWidth / innerWidth) + 1;
+
+      setLooperInstances(Math.max(instances, 2)); // At least 2 instances
+    };
+
+    calculateInstances();
+    window.addEventListener("resize", calculateInstances);
+    return () => window.removeEventListener("resize", calculateInstances);
   }, []);
-
-  const speedClass = {
-    slow: "animate-marquee-slow",
-    normal: "animate-marquee-normal",
-    fast: "animate-marquee-fast",
-  };
 
   return (
     <div className={cn("relative", className)}>
-      <div
-        ref={containerRef}
-        className={cn(
-          "flex overflow-hidden w-full relative",
-          pauseOnHover && "hover:[&>div]:pause",
-          className
-        )}
-      >
+      {/* Main marquee container with overflow hidden */}
+      <div ref={outerRef} className="flex overflow-hidden relative">
         <div
-          ref={scrollerRef}
           className={cn(
             "flex min-w-full flex-nowrap",
-            speedClass[speed],
             direction === "right"
-              ? "animate-marquee-reverse"
-              : "animate-marquee"
+              ? "animate-marquee-right"
+              : "animate-marquee-left",
+            pauseOnHover && "hover:[animation-play-state:paused]"
           )}
+          style={{
+            animationDuration: `${speed}s`,
+          }}
         >
-          {children}
+          {/* Original set of items */}
+          <div
+            ref={innerRef}
+            className="flex items-center justify-around flex-shrink-0"
+          >
+            {children}
+          </div>
+
+          {/* Cloned sets for seamless looping */}
+          {Array(looperInstances)
+            .fill(0)
+            .map((_, index) => (
+              <div
+                key={index}
+                className="flex items-center justify-around flex-shrink-0"
+              >
+                {children}
+              </div>
+            ))}
         </div>
       </div>
+
       {/* Fade effect overlays */}
       {fade && (
         <>
