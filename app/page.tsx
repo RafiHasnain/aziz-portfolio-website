@@ -10,34 +10,31 @@ import Hero from "@/components/hero";
 
 export default function Home() {
   return (
-    <main className="min-h-screen  bg-white">
-      {/* Navigation */}
-      <Navbar />
-      {/* Hero Section */}
-      <Hero />
+    <main className="relative min-h-screen bg-white overflow-hidden">
+      {/* Noise Overlay */}
+      <div
+        className="pointer-events-none fixed inset-0 z-0"
+        style={{
+          backgroundImage: "url('/images/Noise.png')",
+          backgroundRepeat: "repeat",
+          opacity: 0.2,
+        }}
+      />
 
-      {/* Marquee Section */}
-      <MarqueeSection />
-
-      {/* Works Section */}
-      <WorksSection />
-
-      {/* About Me Section */}
-      <AboutMe />
-
-      {/* Personal Gallery Section */}
-      <PersonalGallery />
-
-      {/* Testimonials Section */}
-      <Testimonials />
-
-      {/* Contact Section */}
-      <div id="contact">
-        <ContactSection />
+      {/* Content */}
+      <div className="relative z-10">
+        <Navbar />
+        <Hero />
+        <MarqueeSection />
+        <WorksSection />
+        <AboutMe />
+        <PersonalGallery />
+        <Testimonials />
+        <div id="contact">
+          <ContactSection />
+        </div>
+        <Footer />
       </div>
-
-      {/* Footer */}
-      <Footer />
     </main>
   );
 }

@@ -167,7 +167,7 @@ export function Testimonials() {
   };
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 ">
       <div className="container mx-auto px-4">
         <div className="max-w-5xl mx-auto border border-dashed border-gray-300 rounded-xl p-8">
           {/* Featured Testimonial */}

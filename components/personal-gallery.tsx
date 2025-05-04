@@ -127,7 +127,7 @@ const galleryItems = [
 
 export function PersonalGallery() {
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 ">
       <div>
         <h2 className="text-[32px] font-bold text-center mb-16">
           My Personal Gallery

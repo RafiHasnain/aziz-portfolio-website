@@ -31,113 +31,120 @@ const Hero = () => {
       });
     }
   };
-  return (
-    <div
-      style={{
-        backgroundImage: `url('/images/bg-hero-portfolio.png')`,
-        backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
-      }}
-    >
-      <div className="container mx-auto pt-40 px-4 pb-16 max-w-4xl">
-        <div className="flex flex-col items-center text-center space-y-6">
-          {/* Greeting */}
-          <div className="flex items-center gap-2">
-            <h1 className="text-4xl font-light text-gray-400">
-              Hello, I'm <span className="font-bold text-black">Aziz</span>
-            </h1>
-            <div className=" rounded-md overflow-hidden  ">
-              <Image
-                src="/images/aziz-image.png"
-                alt="Aziz profile"
-                width={99}
-                height={108}
-                className="object-cover"
-              />
-            </div>
-          </div>
 
-          {/* Job Title */}
-          <div className="flex items-center gap-2">
-            <h2 className="text-3xl font-light text-gray-400">
-              Product Designer at{" "}
-              <span className="font-bold text-black">RoBenDevs</span>
-            </h2>
-            <div className="w-20 h-16 bg-black rounded-3xl flex items-center justify-center drop-shadow-xl">
-              <div className="w-10 h-10 text-white">
+  return (
+    <div className="relative">
+      {/* Background Image with reduced opacity */}
+      <div
+        className="absolute inset-0 bg-cover bg-no-repeat z-0"
+        style={{
+          backgroundImage: "url('/images/bg-hero-portfolio.png')",
+          opacity: 0.2, // Adjust this value as needed
+        }}
+      />
+
+      {/* Foreground content */}
+      <div className="relative z-10">
+        <div className="container mx-auto pt-40 px-4 pb-16 max-w-4xl">
+          <div className="flex flex-col items-center text-center space-y-6">
+            {/* Greeting */}
+            <div className="flex items-center gap-2">
+              <h1 className="text-4xl font-light text-gray-400">
+                Hello, I'm <span className="font-bold text-black">Aziz</span>
+              </h1>
+              <div className="rounded-md overflow-hidden">
                 <Image
-                  src="/images/robendevs.png"
-                  alt="Company logo"
-                  width={100}
-                  height={100}
+                  src="/images/aziz-image.png"
+                  alt="Aziz profile"
+                  width={99}
+                  height={108}
+                  className="object-cover"
                 />
               </div>
             </div>
-          </div>
 
-          {/* Tagline */}
-          <div className="flex items-center gap-2">
-            <h3 className="text-2xl font-light text-gray-400">
-              With Love For Data heavy
-            </h3>
-            <div className=" rounded-lg overflow-hidden">
-              <Image
-                src="/images/person-computer.png"
-                alt="Data icon"
-                width={108}
-                height={90}
-              />
+            {/* Job Title */}
+            <div className="flex items-center gap-2">
+              <h2 className="text-3xl font-light text-gray-400">
+                Product Designer at{" "}
+                <span className="font-bold text-black">RoBenDevs</span>
+              </h2>
+              <div className="w-20 h-16 bg-black rounded-3xl flex items-center justify-center drop-shadow-xl">
+                <div className="w-10 h-10 text-white">
+                  <Image
+                    src="/images/robendevs.png"
+                    alt="Company logo"
+                    width={100}
+                    height={100}
+                  />
+                </div>
+              </div>
             </div>
-            <h3 className="text-2xl font-bold text-black">Complex SAAS</h3>
-          </div>
 
-          {/* Description */}
-          <div className="max-w-6xl mx-0 mt-8 text-lg/10 text-gray-400">
-            <p>
-              Specializing in crafting intuitive and impactful user experiences
-              for
-              <span className="mx-2 px-2 py-1 bg-gray-200 text-[#3C3C3D] rounded-md font-medium">
-                Complex
-              </span>
-              ,
-              <span className="mx-2 px-2 py-1  bg-gray-200 text-[#3C3C3D] rounded-md font-medium">
-                Data-driven SaaS
-              </span>
-              <br />
-              products and
-              <span className="mx-2 px-2 py-1 bg-gray-200 text-[#3C3C3D] rounded-md font-medium">
-                Entreprise Solutions
-              </span>
-              backed by
-              <span className="mx-2 px-2 py-1 bg-gray-200 text-[#3C3C3D] rounded-md font-medium">
-                4+ years
-              </span>
-              of industry experience.
-            </p>
-          </div>
+            {/* Tagline */}
+            <div className="flex items-center gap-2">
+              <h3 className="text-2xl font-light text-gray-400">
+                With Love For Data heavy
+              </h3>
+              <div className="rounded-lg overflow-hidden">
+                <Image
+                  src="/images/person-computer.png"
+                  alt="Data icon"
+                  width={108}
+                  height={90}
+                />
+              </div>
+              <h3 className="text-2xl font-bold text-black">Complex SAAS</h3>
+            </div>
 
-          {/* CTA Buttons */}
-          <div className="flex gap-4 mt-8">
-            <div className="relative">
-              <div className=" opacity-30 bg-gradient-to-r from-transparent from-40% via-black via-50% to-transparent to-60% absolute top-0 bottom-0 w-full"></div>
-              <a
-                href="https://calendly.com/azizulislamux"
-                target="_blank"
-                rel="noopener noreferrer"
+            {/* Description */}
+            <div className="max-w-6xl mx-0 mt-8 text-lg/10 text-gray-400">
+              <p>
+                Specializing in crafting intuitive and impactful user
+                experiences for
+                <span className="mx-2 px-2 py-1 bg-gray-200 text-[#3C3C3D] rounded-md font-medium">
+                  Complex
+                </span>
+                ,
+                <span className="mx-2 px-2 py-1 bg-gray-200 text-[#3C3C3D] rounded-md font-medium">
+                  Data-driven SaaS
+                </span>
+                <br />
+                products and
+                <span className="mx-2 px-2 py-1 bg-gray-200 text-[#3C3C3D] rounded-md font-medium">
+                  Entreprise Solutions
+                </span>
+                backed by
+                <span className="mx-2 px-2 py-1 bg-gray-200 text-[#3C3C3D] rounded-md font-medium">
+                  4+ years
+                </span>
+                of industry experience.
+              </p>
+            </div>
+
+            {/* CTA Buttons */}
+            <div className="flex gap-4 mt-8">
+              <div className="relative">
+                <div className="opacity-30 bg-gradient-to-r from-transparent from-40% via-black via-50% to-transparent to-60% absolute top-0 bottom-0 w-full"></div>
+                <a
+                  href="https://calendly.com/azizulislamux"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button className="rounded-full bg-[#1E1E1E] outline outline-offset-2 outline-1 drop-shadow-xl hover:bg-black px-6">
+                    Book a Call 💬
+                  </Button>
+                </a>
+              </div>
+
+              <Button
+                variant="outline"
+                onClick={copyToClipboard}
+                className="rounded-full border-gray-300 text-gray-700 outline outline-offset-2 outline-1 outline-[#E7E7E7] drop-shadow-xl hover:bg-gray-100 px-6"
               >
-                <Button className="rounded-full bg-[#1E1E1E] outline outline-offset-2 outline-1 drop-shadow-xl  hover:bg-black px-6">
-                  Book a Call 💬
-                </Button>
-              </a>
+                📩 Copy email
+              </Button>
             </div>
-
-            <Button
-              variant="outline"
-              onClick={copyToClipboard}
-              className="rounded-full border-gray-300 text-gray-700 outline outline-offset-2 outline-1 outline-[#E7E7E7] drop-shadow-xl hover:bg-gray-100 px-6"
-            >
-              📩 Copy email
-            </Button>
           </div>
         </div>
       </div>

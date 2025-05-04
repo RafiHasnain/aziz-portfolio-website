@@ -4,7 +4,7 @@ import { WordFlipperSlide } from "./word-flipper-slide";
 
 export function AboutMe() {
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 ">
       <div className="container mx-auto px-4">
         <h2 className="text-[32px] font-bold text-center mb-16">About Me</h2>
 
