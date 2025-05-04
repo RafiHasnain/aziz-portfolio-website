@@ -36,10 +36,10 @@ const Hero = () => {
     <div className="relative">
       {/* Background Image with reduced opacity */}
       <div
-        className="absolute inset-0 bg-cover bg-no-repeat z-0"
+        className="absolute inset-0 bg-contain bg-no-repeat z-0"
         style={{
           backgroundImage: "url('/images/bg-hero-portfolio.png')",
-          opacity: 0.2, // Adjust this value as needed
+          opacity: 0.7, // Adjust this value as needed
         }}
       />
 
@@ -102,20 +102,20 @@ const Hero = () => {
               <p>
                 Specializing in crafting intuitive and impactful user
                 experiences for
-                <span className="mx-2 px-2 py-1 bg-gray-200 text-[#3C3C3D] rounded-md font-medium">
+                <span className="mx-2 px-2 py-1 bg-gray-200 text-[#3C3C3D]  rounded-md font-bold">
                   Complex
                 </span>
                 ,
-                <span className="mx-2 px-2 py-1 bg-gray-200 text-[#3C3C3D] rounded-md font-medium">
+                <span className="mx-2 px-2 py-1 bg-gray-200 text-[#3C3C3D] rounded-md font-bold">
                   Data-driven SaaS
                 </span>
                 <br />
                 products and
-                <span className="mx-2 px-2 py-1 bg-gray-200 text-[#3C3C3D] rounded-md font-medium">
+                <span className="mx-2 px-2 py-1 bg-gray-200 text-[#3C3C3D] rounded-md font-bold">
                   Entreprise Solutions
                 </span>
                 backed by
-                <span className="mx-2 px-2 py-1 bg-gray-200 text-[#3C3C3D] rounded-md font-medium">
+                <span className="mx-2 px-2 py-1 bg-gray-200 text-[#3C3C3D] rounded-md font-bold">
                   4+ years
                 </span>
                 of industry experience.
@@ -125,13 +125,13 @@ const Hero = () => {
             {/* CTA Buttons */}
             <div className="flex gap-4 mt-8">
               <div className="relative">
-                <div className="opacity-30 bg-gradient-to-r from-transparent from-40% via-black via-50% to-transparent to-60% absolute top-0 bottom-0 w-full"></div>
+                <div className="opacity-30  z-30 bg-gradient-to-r from-transparent from-40% via-black via-50% to-transparent to-60% absolute top-0 bottom-0 w-full"></div>
                 <a
                   href="https://calendly.com/azizulislamux"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <Button className="rounded-full bg-[#1E1E1E] outline outline-offset-2 outline-1 drop-shadow-xl hover:bg-black px-6">
+                  <Button className="rounded-full static bg-[#1E1E1E] outline outline-offset-2 outline-1 drop-shadow-xl hover:bg-black px-6">
                     Book a Call 💬
                   </Button>
                 </a>
@@ -140,7 +140,7 @@ const Hero = () => {
               <Button
                 variant="outline"
                 onClick={copyToClipboard}
-                className="rounded-full border-gray-300 text-gray-700 outline outline-offset-2 outline-1 outline-[#E7E7E7] drop-shadow-xl hover:bg-gray-100 px-6"
+                className="rounded-full border-gray-300 text-gray-700 outline outline-offset-2 outline-1 outline-[#E7E7E7]  hover:bg-gray-100 px-6"
               >
                 📩 Copy email
               </Button>
