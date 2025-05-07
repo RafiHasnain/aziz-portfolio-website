@@ -17,7 +17,7 @@ export default function Home() {
         style={{
           backgroundImage: "url('/images/Noise.png')",
           backgroundRepeat: "repeat",
-          opacity: 0.2,
+          opacity: 0.04,
         }}
       />
 

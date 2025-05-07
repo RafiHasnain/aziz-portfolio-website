@@ -36,23 +36,46 @@ const Hero = () => {
     <div className="relative">
       {/* Background Image with reduced opacity */}
       <div
-        className="absolute inset-0 bg-contain bg-no-repeat z-0"
+        className="absolute inset-0  z-0"
+        // style={{
+        //   backgroundImage:
+        //     "url('/images/bg-hero-portfolio.png'), url('/images/bg-hero-effect-portfolio.png') ",
+        //   backgroundRepeat: "no-repeat, no-repeat",
+        //   backgroundPosition: "left, right",
+        //   backgroundSize: "contain, contain",
+        //   opacity: 1, // Adjust this value as needed
+        // }}
+      />
+
+      <div
+        className="absolute  top-0 left-0 w-full h-full bg-no-repeat bg-contain"
         style={{
           backgroundImage: "url('/images/bg-hero-portfolio.png')",
-          opacity: 0.7, // Adjust this value as needed
+          backgroundPosition: "top left",
+          opacity: 1, // First image opacity
+        }}
+      />
+
+      {/* Second background image */}
+      <div
+        className="absolute  bottom-0 right-0 w-full h-full bg-no-repeat bg-contain"
+        style={{
+          backgroundImage: "url('/images/bg-hero-effect-portfolio.png')",
+          backgroundPosition: "top right",
+          opacity: 0.2, // Second image opacity
         }}
       />
 
       {/* Foreground content */}
       <div className="relative z-10">
-        <div className="container mx-auto pt-40 px-4 pb-16 max-w-4xl">
+        <div className="container mx-auto pt-40 px-4 pb-96 max-w-4xl">
           <div className="flex flex-col items-center text-center space-y-6">
             {/* Greeting */}
             <div className="flex items-center gap-2">
               <h1 className="text-4xl font-light text-gray-400">
                 Hello, I'm <span className="font-bold text-black">Aziz</span>
               </h1>
-              <div className="rounded-md overflow-hidden">
+              <div className="rounded-[20px] overflow-hidden">
                 <Image
                   src="/images/aziz-image.png"
                   alt="Aziz profile"
@@ -69,7 +92,7 @@ const Hero = () => {
                 Product Designer at{" "}
                 <span className="font-bold text-black">RoBenDevs</span>
               </h2>
-              <div className="w-20 h-16 bg-black rounded-3xl flex items-center justify-center drop-shadow-xl">
+              <div className="w-20 h-16 bg-black rounded-[20px] flex items-center justify-center drop-shadow-xl">
                 <div className="w-10 h-10 text-white">
                   <Image
                     src="/images/robendevs.png"
@@ -86,7 +109,7 @@ const Hero = () => {
               <h3 className="text-2xl font-light text-gray-400">
                 With Love For Data heavy
               </h3>
-              <div className="rounded-lg overflow-hidden">
+              <div className="rounded-[20px] overflow-hidden">
                 <Image
                   src="/images/person-computer.png"
                   alt="Data icon"
@@ -98,7 +121,7 @@ const Hero = () => {
             </div>
 
             {/* Description */}
-            <div className="max-w-6xl mx-0 mt-8 text-lg/10 text-gray-400">
+            <div className="max-w-6xl mx-0 mt-8 pb-12 text-lg/10 text-gray-400">
               <p>
                 Specializing in crafting intuitive and impactful user
                 experiences for
@@ -111,7 +134,7 @@ const Hero = () => {
                 </span>
                 <br />
                 products and
-                <span className="mx-2 px-2 py-1 bg-gray-200 text-[#3C3C3D] rounded-md font-bold">
+                <span className="mx-2 px-2 py-1 mr-3 bg-gray-200 text-[#3C3C3D] rounded-md font-bold">
                   Entreprise Solutions
                 </span>
                 backed by

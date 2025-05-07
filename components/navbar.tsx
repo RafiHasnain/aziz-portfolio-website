@@ -61,7 +61,7 @@ const Navbar = () => {
               className={`${
                 !isPlayground || isContact
                   ? "hidden"
-                  : "fixed top-7 sm:top-8 md:top-10 left-7 sm:left-8 md:left-10 text-gray-500 text-xs sm:text-sm"
+                  : "fixed top-7 sm:top-8 md:top-10 left-24  sm:left-[125px]  md:left-[180px] text-gray-500 text-xs sm:text-sm"
               }`}
             >
               ·
@@ -76,6 +76,15 @@ const Navbar = () => {
             } transition-colors text-xs sm:text-sm lg:text-base whitespace-nowrap`}
           >
             Contact
+            <span
+              className={`${
+                isPlayground || !isContact
+                  ? "hidden"
+                  : "fixed top-7 sm:top-8 md:top-10 left-40  sm:left-[225px]  md:left-[320px] text-gray-500 text-xs sm:text-sm"
+              }`}
+            >
+              ·
+            </span>
           </Link>
           <Button
             variant="ghost"

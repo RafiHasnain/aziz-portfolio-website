@@ -11,6 +11,7 @@ export interface WorkItem {
   categories: WorkCategory[];
   tags: string[];
   image: string;
+  color: string;
   conversion: string;
   satisfaction: string;
   livePreviewUrl?: string;
@@ -26,6 +27,7 @@ export const works: WorkItem[] = [
     categories: ["Web Design", "SaaS Products"],
     tags: ["UX Research", "Web Application", "Product Design"],
     image: "/images/my-work-1.png",
+    color: "blue",
     conversion: "45%",
     satisfaction: "4.5*",
     livePreviewUrl: "#",
@@ -39,6 +41,7 @@ export const works: WorkItem[] = [
     categories: ["Mobile Apps", "SaaS Products"],
     tags: ["UX Research", "Mobile Application", "Product Design"],
     image: "/images/my-work-1.png",
+    color: "purple",
     conversion: "52%",
     satisfaction: "4.7*",
     livePreviewUrl: "#",
@@ -52,6 +55,7 @@ export const works: WorkItem[] = [
     categories: ["Web Design", "Case Study"],
     tags: ["UX Research", "Web Application", "E-commerce"],
     image: "/images/my-work-1.png",
+    color: "violet",
     conversion: "38%",
     satisfaction: "4.3*",
     livePreviewUrl: "#",
@@ -65,6 +69,7 @@ export const works: WorkItem[] = [
     categories: ["Mobile Apps", "Case Study"],
     tags: ["UX Research", "Mobile Application", "Health Tech"],
     image: "/images/my-work-1.png",
+    color: "cyan",
     conversion: "61%",
     satisfaction: "4.8*",
     livePreviewUrl: "#",

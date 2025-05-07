@@ -59,8 +59,8 @@ export function AboutMe() {
                 </span>
               </div>
 
-              <WordFlipperSlide />
-              {/* <div className="flex items-center gap-3">
+              {/* <WordFlipperSlide /> */}
+              <div className="flex items-center gap-3">
                 <div className="p-2 rounded-full">
                   <Image
                     src="/images/figma-logo.png"
@@ -71,9 +71,9 @@ export function AboutMe() {
                   />
                 </div>
                 <span className="text-[32px] font-semibold">
-                  Profession by Designer
+                  Designer by Profession
                 </span>
-              </div> */}
+              </div>
 
               <div className="flex items-center gap-3">
                 {/* <div className="bg-gray-100 p-2 rounded-full">

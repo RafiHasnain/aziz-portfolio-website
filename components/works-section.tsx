@@ -20,7 +20,7 @@ export function WorksSection() {
 
         {/* Filter Buttons */}
         <div className="flex flex-wrap justify-center gap-2 mb-12  ">
-          <div className=" rounded-xl bg-[#E0E0E0]">
+          <div className=" rounded-xl bg-gray-100">
             {categories.map((category) => (
               <Button
                 key={category}
@@ -28,7 +28,7 @@ export function WorksSection() {
                 className={` ${
                   activeCategory === category
                     ? "bg-white text-[#0F0E1E] italic drop-shadow-md hover:bg-white"
-                    : "bg-[#E0E0E0] text-gray-500 hover:bg-gray-200"
+                    : "bg-gray-100 text-gray-500 hover:bg-gray-200"
                 }`}
                 onClick={() => setActiveCategory(category)}
               >
