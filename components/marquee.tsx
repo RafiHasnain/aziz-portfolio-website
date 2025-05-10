@@ -94,7 +94,8 @@ export function Marquee({
             className="pointer-events-none absolute left-0 top-0 z-10 h-full"
             style={{
               width: `${fadeWidth}px`,
-              background: "linear-gradient(to right, white, transparent)",
+              background:
+                "linear-gradient(to right, oklch(98.5% 0.002 247.839), transparent)",
             }}
             aria-hidden="true"
           />
@@ -104,7 +105,8 @@ export function Marquee({
             className="pointer-events-none absolute right-0 top-0 z-10 h-full"
             style={{
               width: `${fadeWidth}px`,
-              background: "linear-gradient(to left, white, transparent)",
+              background:
+                "linear-gradient(to left, oklch(98.5% 0.002 247.839), transparent)",
             }}
             aria-hidden="true"
           />

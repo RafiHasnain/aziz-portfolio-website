@@ -12,20 +12,32 @@ export default function Home() {
   return (
     <main className="relative min-h-screen bg-white overflow-hidden">
       {/* Noise Overlay */}
-      <div
+      {/* <div
         className="pointer-events-none fixed inset-0 z-0"
         style={{
           backgroundImage: "url('/images/Noise.png')",
           backgroundRepeat: "repeat",
-          opacity: 0.04,
+          opacity: 0.5,
+        }}
+      /> */}
+
+      <div
+        className="absolute top-[130vh] inset-0  z-0"
+        style={{
+          backgroundImage: "url('/images//Noise.png') ",
+          backgroundRepeat: "no-repeat",
+          // backgroundPosition: "left, right",
+          backgroundSize: "cover",
+          // opacity: 0.6, // Adjust this value as needed
+          opacity: 0.1, // Adjust this value as needed
         }}
       />
 
+      <Navbar />
+      <Hero />
       {/* Content */}
       <div className="relative z-10">
-        <Navbar />
-        <Hero />
-        <MarqueeSection />
+        {/* <MarqueeSection /> */}
         <WorksSection />
         <AboutMe />
         <PersonalGallery />

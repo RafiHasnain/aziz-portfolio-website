@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Mail, Phone } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 import React, { useState } from "react";
+import { MarqueeSection } from "./marquee-section";
 
 const Hero = () => {
   const [copied, setCopied] = useState(false);
@@ -37,38 +38,37 @@ const Hero = () => {
       {/* Background Image with reduced opacity */}
       <div
         className="absolute inset-0  z-0"
-        // style={{
-        //   backgroundImage:
-        //     "url('/images/bg-hero-portfolio.png'), url('/images/bg-hero-effect-portfolio.png') ",
-        //   backgroundRepeat: "no-repeat, no-repeat",
-        //   backgroundPosition: "left, right",
-        //   backgroundSize: "contain, contain",
-        //   opacity: 1, // Adjust this value as needed
-        // }}
+        style={{
+          backgroundImage: "url('/images/bg-hero-portfolio.png') ",
+          backgroundRepeat: "no-repeat",
+          // backgroundPosition: "left, right",
+          backgroundSize: "contain",
+          opacity: 0.2, // Adjust this value as needed
+        }}
       />
 
-      <div
+      {/* <div
         className="absolute  top-0 left-0 w-full h-full bg-no-repeat bg-contain"
         style={{
-          backgroundImage: "url('/images/bg-hero-portfolio.png')",
+          backgroundImage: "url('/images/bg-hero-wave-effect-portfolio.png')",
           backgroundPosition: "top left",
           opacity: 1, // First image opacity
         }}
-      />
+      /> */}
 
       {/* Second background image */}
-      <div
+      {/* <div
         className="absolute  bottom-0 right-0 w-full h-full bg-no-repeat bg-contain"
         style={{
-          backgroundImage: "url('/images/bg-hero-effect-portfolio.png')",
+          backgroundImage: "url('/images/bg-hero-grid-effect-portfolio.png')",
           backgroundPosition: "top right",
           opacity: 0.2, // Second image opacity
         }}
-      />
+      /> */}
 
       {/* Foreground content */}
-      <div className="relative z-10">
-        <div className="container mx-auto pt-40 px-4 pb-96 max-w-4xl">
+      <div className="relative z-10 pt-40 px-4 pb-10">
+        <div className="container mx-auto  max-w-4xl">
           <div className="flex flex-col items-center text-center space-y-6">
             {/* Greeting */}
             <div className="flex items-center gap-2">
@@ -170,6 +170,7 @@ const Hero = () => {
             </div>
           </div>
         </div>
+        <MarqueeSection />
       </div>
     </div>
   );
