@@ -42,8 +42,8 @@ const Hero = () => {
           backgroundImage: "url('/images/bg-hero-portfolio.png') ",
           backgroundRepeat: "no-repeat",
           // backgroundPosition: "left, right",
-          backgroundSize: "contain",
-          opacity: 0.2, // Adjust this value as needed
+          backgroundSize: "cover",
+          opacity: 1, // Adjust this value as needed
         }}
       />
 
@@ -67,8 +67,8 @@ const Hero = () => {
       /> */}
 
       {/* Foreground content */}
-      <div className="relative z-10 pt-40 px-4 pb-10">
-        <div className="container mx-auto  max-w-4xl">
+      <div className="relative z-10 ">
+        <div className="container mx-auto pt-40 px-4 pb-10 max-w-4xl">
           <div className="flex flex-col items-center text-center space-y-6">
             {/* Greeting */}
             <div className="flex items-center gap-2">

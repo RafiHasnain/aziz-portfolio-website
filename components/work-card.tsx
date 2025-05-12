@@ -20,7 +20,11 @@ export function WorkCard({ work }: WorkCardProps) {
         }}
       />
       <div
-        className={` bg-gradient-to-r from-gray-50 to-${work.color}-50 rounded-xl p-8 mb-8 shadow-sm`}
+        className={`rounded-xl p-8 mb-8 shadow-sm`}
+        style={{
+          backgroundColor: "white",
+          backgroundImage: `linear-gradient(54deg, white, ${work.color})`,
+        }}
       >
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div className="space-y-4 flex flex-col justify-evenly">
