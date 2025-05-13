@@ -1,5 +1,4 @@
 import { MarqueeSection } from "@/components/marquee-section";
-import { WorksSection } from "@/components/works-section";
 import { AboutMe } from "@/components/about-me";
 import { PersonalGallery } from "@/components/personal-gallery";
 import { Testimonials } from "@/components/testimonials";
@@ -7,6 +6,7 @@ import { ContactSection } from "@/components/contact-section";
 import { Footer } from "@/components/footer";
 import Navbar from "@/components/navbar";
 import Hero from "@/components/hero";
+import WorksSectionServer from "@/components/works-section-server";
 
 export default function Home() {
   return (
@@ -38,7 +38,7 @@ export default function Home() {
       {/* Content */}
       <div className="relative z-10">
         {/* <MarqueeSection /> */}
-        <WorksSection />
+        <WorksSectionServer />
         <AboutMe />
         <PersonalGallery />
         <Testimonials />

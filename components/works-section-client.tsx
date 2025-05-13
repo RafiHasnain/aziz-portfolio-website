@@ -5,12 +5,19 @@ import { works, categories, type WorkCategory } from "@/data/works";
 import { WorkCard } from "./work-card";
 import { Button } from "@/components/ui/button";
 
-export function WorksSection() {
+export function WorkClientSection({ studies }: { studies: any[] }) {
+  console.log({ studies });
   const [activeCategory, setActiveCategory] =
     useState<WorkCategory>("Web Design");
 
-  const filteredWorks = works.filter((work) =>
-    work.categories.includes(activeCategory)
+  // const filteredWorks = works.filter((work) =>
+  //   work.categories.includes(activeCategory)
+  // );
+
+  const filteredWorks = studies.filter((work) =>
+    work.properties.Category?.multi_select?.some(
+      (c: any) => c.name === activeCategory
+    )
   );
 
   return (
@@ -39,10 +46,31 @@ export function WorksSection() {
         </div>
 
         {/* Work Cards */}
-        <div className="space-y-8">
+        {/* <div className="space-y-8">
           {filteredWorks.map((work) => (
             <WorkCard key={work.id} work={work} />
           ))}
+        </div> */}
+
+        <div className="space-y-8">
+          {filteredWorks.map((item: any) => {
+            const props = item.properties;
+            const work = {
+              id: item.id,
+              title: props.title?.title?.[0]?.plain_text ?? "Untitled",
+              description: props.description?.rich_text?.[0]?.plain_text ?? "",
+              tags: props.tags?.multi_select?.map((t: any) => t.name) || [],
+              image: props.image?.files?.[0]?.file?.url ?? "/placeholder.svg",
+              conversion: props.conversion?.number ?? "—",
+              satisfaction: props.satisfaction?.number ?? "—",
+              color: "",
+              livePreviewUrl: props.livePreview?.url ?? null,
+              caseStudyUrl: props.caseStudyUrl?.url ?? null,
+              categories: props.category?.multi_select?.map((c: any) => c.name),
+            };
+
+            return <WorkCard key={work.id} work={work} />;
+          })}
         </div>
       </div>
     </section>
