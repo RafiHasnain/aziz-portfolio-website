@@ -1,8 +1,7 @@
 import { getPlaygroundImages } from "@/lib/notion";
 import { InfiniteCanvas } from "./infinite-canvas";
 
-// Force this component to always fetch fresh data
-export const fetchCache = "force-no-store";
+export const dynamic = "force-dynamic"; // 👈 This disables static rendering + caching
 
 export default async function InfiniteCanvasServer() {
   const playgroundImages = await getPlaygroundImages();

@@ -2,8 +2,7 @@
 import { getWorks } from "@/lib/notion";
 import { WorkClientSection } from "./works-section-client";
 
-// Force this component to always fetch fresh data
-export const fetchCache = "force-no-store";
+export const dynamic = "force-dynamic"; // 👈 This disables static rendering + caching
 
 export default async function WorksSectionServer() {
   const works = await getWorks();
