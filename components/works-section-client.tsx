@@ -5,8 +5,8 @@ import { works, categories, type WorkCategory } from "@/data/works";
 import { WorkCard } from "./work-card";
 import { Button } from "@/components/ui/button";
 
-export function WorkClientSection({ studies }: { studies: any[] }) {
-  console.log({ studies });
+export function WorkClientSection({ works }: { works: any[] }) {
+  // console.log({ studies });
   const [activeCategory, setActiveCategory] =
     useState<WorkCategory>("Web Design");
 
@@ -14,11 +14,13 @@ export function WorkClientSection({ studies }: { studies: any[] }) {
   //   work.categories.includes(activeCategory)
   // );
 
-  const filteredWorks = studies.filter((work) =>
-    work.properties.Category?.multi_select?.some(
+  const filteredWorks = works.filter((work) =>
+    work.properties.categories?.multi_select?.some(
       (c: any) => c.name === activeCategory
     )
   );
+
+  // console.log({ filteredWorks });
 
   return (
     <section className="py-16">
@@ -54,16 +56,18 @@ export function WorkClientSection({ studies }: { studies: any[] }) {
 
         <div className="space-y-8">
           {filteredWorks.map((item: any) => {
+            console.log({ properties: item.properties });
             const props = item.properties;
             const work = {
               id: item.id,
-              title: props.title?.title?.[0]?.plain_text ?? "Untitled",
+              title: props.title?.rich_text?.[0]?.plain_text ?? "Untitled",
               description: props.description?.rich_text?.[0]?.plain_text ?? "",
               tags: props.tags?.multi_select?.map((t: any) => t.name) || [],
               image: props.image?.files?.[0]?.file?.url ?? "/placeholder.svg",
-              conversion: props.conversion?.number ?? "—",
-              satisfaction: props.satisfaction?.number ?? "—",
-              color: "",
+              conversion: props.conversion?.rich_text?.[0]?.plain_text ?? "—",
+              satisfaction:
+                props.satisfaction?.rich_text?.[0]?.plain_text ?? "—",
+              color: props.color?.rich_text?.[0]?.plain_text ?? "",
               livePreviewUrl: props.livePreview?.url ?? null,
               caseStudyUrl: props.caseStudyUrl?.url ?? null,
               categories: props.category?.multi_select?.map((c: any) => c.name),

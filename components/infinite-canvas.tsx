@@ -13,7 +13,7 @@ const CARD_WIDTH = 320;
 const CARD_HEIGHT = 240;
 const CARD_MARGIN = 60; // Space between cards
 
-export function InfiniteCanvas({ projects }: InfiniteCanvasProps) {
+export function InfiniteCanvas({ projects }: any) {
   const canvasRef = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
@@ -464,6 +464,7 @@ export function InfiniteCanvas({ projects }: InfiniteCanvasProps) {
         }}
       >
         {visibleCards.map((card) => (
+          // console.log({visibleCards})
           <div
             key={card.id}
             className="absolute will-change-transform"

@@ -7,7 +7,7 @@ import { ArrowUpRight } from "lucide-react";
 import type { PlaygroundProject } from "@/data/playground-projects";
 
 interface ProjectCardProps {
-  project: PlaygroundProject;
+  project: any;
   rotation: number;
 }
 
@@ -16,11 +16,12 @@ export const ProjectCard = memo(function ProjectCard({
   project,
   rotation,
 }: ProjectCardProps) {
+  console.log({ project });
   const [isHovered, setIsHovered] = useState(false);
 
   return (
     <div
-      className="group relative w-[320px] overflow-hidden rounded-lg bg-white shadow-lg transition-all duration-300 ease-out"
+      className="group relative w-[420px] overflow-hidden rounded-lg bg-white shadow-lg transition-all duration-300 ease-out"
       style={{
         transform: isHovered
           ? "rotate(0deg) scale(1.05)"
@@ -35,27 +36,30 @@ export const ProjectCard = memo(function ProjectCard({
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* Project Image */}
-      <div className="relative aspect-[16/9] w-full overflow-hidden">
+      <div className="relative aspect-auto w-full overflow-hidden">
         <Image
-          src={project.image || "/placeholder.svg"}
-          alt={project.title}
-          width={320}
-          height={180}
+          src={
+            project?.properties?.image?.files?.[0]?.file?.url ??
+            "/placeholder.svg"
+          }
+          alt={project?.title?.rich_text?.[0]?.plain_text ?? "Untitled"}
+          width={2350}
+          height={2100}
           className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
           priority={false}
           loading="lazy"
         />
 
         {/* Overlay with arrow icon on hover */}
-        <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 transition-all duration-300 group-hover:bg-opacity-30">
+        {/* <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 transition-all duration-300 group-hover:bg-opacity-30">
           <div className="rounded-full bg-white p-2 opacity-0 transition-all duration-300 group-hover:opacity-100">
             <ArrowUpRight className="h-5 w-5 text-black" />
           </div>
-        </div>
+        </div> */}
       </div>
 
       {/* Project Info */}
-      <div className="p-4">
+      {/* <div className="p-4">
         <div className="mb-2 flex items-center justify-between">
           <span className="text-xs font-medium text-gray-500">
             {project.category}
@@ -66,14 +70,14 @@ export const ProjectCard = memo(function ProjectCard({
           {project.title}
         </h3>
         <p className="text-sm text-gray-600">{project.description}</p>
-      </div>
+      </div> */}
 
       {/* Invisible link for the entire card */}
-      <Link
+      {/* <Link
         href={project.link}
         className="absolute inset-0"
         aria-label={`View ${project.title} project`}
-      />
+      /> */}
     </div>
   );
 });
