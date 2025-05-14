@@ -3,7 +3,7 @@ import { getWorks } from "@/lib/notion";
 import { WorkClientSection } from "./works-section-client";
 
 export default async function WorksSectionServer() {
-  const works = await getWorks({ cache: "no-store" });
+  const works = await getWorks();
 
   return <WorkClientSection works={works} />;
 }
