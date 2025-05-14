@@ -9,6 +9,7 @@ interface WorkCardProps {
 }
 
 export function WorkCard({ work }: WorkCardProps) {
+  console.log({ work });
   return (
     <div className="relative">
       <div
