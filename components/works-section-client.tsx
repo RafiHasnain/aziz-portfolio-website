@@ -6,7 +6,6 @@ import { WorkCard } from "./work-card";
 import { Button } from "@/components/ui/button";
 
 export function WorkClientSection({ works }: { works: any[] }) {
-  // console.log({ studies });
   const [activeCategory, setActiveCategory] =
     useState<WorkCategory>("Web Design");
 
@@ -19,8 +18,6 @@ export function WorkClientSection({ works }: { works: any[] }) {
       (c: any) => c.name === activeCategory
     )
   );
-
-  // console.log({ filteredWorks });
 
   return (
     <section className="py-16">
@@ -56,11 +53,10 @@ export function WorkClientSection({ works }: { works: any[] }) {
 
         <div className="space-y-8">
           {filteredWorks.map((item: any) => {
-            console.log({ properties: item.properties });
             const props = item.properties;
             const work = {
-              id: item.id,
-              title: props.title?.rich_text?.[0]?.plain_text ?? "Untitled",
+              id: props.id?.unique_id?.number,
+              title: props.title?.title?.[0]?.plain_text ?? "Untitled",
               description: props.description?.rich_text?.[0]?.plain_text ?? "",
               tags: props.tags?.multi_select?.map((t: any) => t.name) || [],
               image: props.image?.files?.[0]?.file?.url ?? "/placeholder.svg",

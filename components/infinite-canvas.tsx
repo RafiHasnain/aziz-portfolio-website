@@ -464,7 +464,6 @@ export function InfiniteCanvas({ projects }: any) {
         }}
       >
         {visibleCards.map((card) => (
-          // console.log({visibleCards})
           <div
             key={card.id}
             className="absolute will-change-transform"

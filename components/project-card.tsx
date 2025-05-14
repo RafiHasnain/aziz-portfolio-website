@@ -16,7 +16,6 @@ export const ProjectCard = memo(function ProjectCard({
   project,
   rotation,
 }: ProjectCardProps) {
-  console.log({ project });
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -42,7 +41,7 @@ export const ProjectCard = memo(function ProjectCard({
             project?.properties?.image?.files?.[0]?.file?.url ??
             "/placeholder.svg"
           }
-          alt={project?.title?.rich_text?.[0]?.plain_text ?? "Untitled"}
+          alt={project?.properties?.title?.title?.[0]?.plain_text ?? "Untitled"}
           width={2350}
           height={2100}
           className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"

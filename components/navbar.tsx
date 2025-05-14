@@ -20,10 +20,6 @@ const Navbar = () => {
     document.body.removeChild(link);
   };
 
-  // useEffect(() => {
-  //   console.log({ isContact });
-  // }, [isContact]);
-
   return (
     <div className="container mx-auto px-4 pt-4 sm:pt-6 lg:pt-8 flex justify-center fixed left-0 right-0 z-50 ">
       <div className="">
