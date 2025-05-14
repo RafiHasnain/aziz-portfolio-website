@@ -2,10 +2,8 @@
 import { getWorks } from "@/lib/notion";
 import { WorkClientSection } from "./works-section-client";
 
-export const dynamic = "force-dynamic"; // 👈 This disables static rendering + caching
-
 export default async function WorksSectionServer() {
-  const works = await getWorks();
+  const works = await getWorks({ cache: "no-store" });
 
   return <WorkClientSection works={works} />;
 }
