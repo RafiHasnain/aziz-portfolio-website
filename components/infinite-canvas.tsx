@@ -695,7 +695,7 @@ export function InfiniteCanvas({ projects }: { projects: any[] }) {
   // Get image URL safely with a fallback
   const getImageUrl = useCallback((project: any) => {
     const url = project?.properties?.image?.files?.[0]?.file?.url;
-    return url || "/placeholder.svg";
+    return url || "/images/placeholder.svg";
   }, []);
 
   // Use cached image if available
